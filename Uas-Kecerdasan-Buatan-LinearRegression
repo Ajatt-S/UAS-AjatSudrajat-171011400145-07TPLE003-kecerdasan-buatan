@@ -1,0 +1,33 @@
+# - * - pengkodean: utf-8 - * -
+"" "
+Editor Spyder
+
+impor  numpy  sebagai  np
+impor  panda  sebagai  pd
+dari  matplotlib  import  pyplot  sebagai  plt
+dari  sklearn . linear_model  import  LinearRegression
+
+df  =  pd . DataFrame ([[ 151 , 63 ], [ 174 , 81 ], [ 138 , 56 ], [ 186 , 91 ], [ 128 , 47 ], [ 136 , 57 ], [ 179 , 76 ], [ 163 , 72 ] , [ 152 , 62 ], [ 131 , 48 ]])
+df . kolom  = [ 'x' , 'y' ]
+
+x_train  =  df [ 'x' ]. nilai [:, np . sumbu baru ]
+y_train  =  df [ 'y' ]. nilai-nilai
+
+lm  =  LinearRegression ()
+lm . fit ( x_train , y_train ) #fase training
+cetak ( 'Koefisien:'  +  str ( lm . coef_ ))
+cetak ( 'Intercept:'  +  str ( lm . intercept_ ))
+
+x_test  = [[ 165 ], [ 168 ]]
+      
+p  =  lm . prediksi ( x_test ) #fase prediksi
+print ( p ) #hasil prediksi
+      
+      #persiapkan plot
+pb  =  lm . prediksi ( x_train )
+dfc  =  pd . DataFrame ({ 'x' : df [ 'x' ], 'y' : pb })
+plt . sebarkan ( df [ 'x' ], df [ 'y' ])
+plt . plot ( dfc [ 'x' ], dfc [ 'y' ], color = 'red' , linewidth = 1 )
+plt . xlabel ( 'Tinggi dalam cm' )
+plt . ylabel ( 'Berat dalam Kg' )
+plt . tampilkan ()
